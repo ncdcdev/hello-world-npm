@@ -1,5 +1,4 @@
-import trim from './trim';
-
+import { ElevationLevel } from './ElevationLevel';
 export {
-  trim
+  ElevationLevel
 }

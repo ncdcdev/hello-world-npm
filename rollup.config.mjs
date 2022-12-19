@@ -9,6 +9,8 @@ import pluginNodeResolve from '@rollup/plugin-node-resolve';
 // トランスパイル用
 import { babel as pluginBabel } from '@rollup/plugin-babel';
 import * as path from 'path';
+// 型定義用
+import dts from 'rollup-plugin-dts'
 
 import pkg from './package.json' assert { type: "json" };
 
@@ -56,6 +58,9 @@ export default [
     ],
     plugins: [
       pluginTypescript(),
+      // dts({
+      //   input: './dist/index.d.ts',
+      // }),
       pluginCommonjs({
         extensions: ['.js', '.ts'],
       }),
@@ -90,6 +95,7 @@ export default [
     ],
     plugins: [
       pluginTypescript(),
+      // dts(),
       pluginCommonjs({
         extensions: ['.js', '.ts'],
       }),
@@ -114,7 +120,7 @@ export default [
         format: 'cjs',
         sourcemap: 'inline',
         banner,
-        exports: 'default',
+        exports: 'auto',
       },
     ],
     external: [
@@ -123,6 +129,7 @@ export default [
     ],
     plugins: [
       pluginTypescript(),
+      // dts(),
       pluginCommonjs({
         extensions: ['.js', '.ts'],
       }),
@@ -137,4 +144,10 @@ export default [
       }),
     ],
   },
+  // {
+  //   // path to your declaration files root
+  //   input: './dist/types/index.d.ts',
+  //   output: [{ file: 'dist/index.d.ts', format: 'es' }],
+  //   plugins: [dts()],
+  // },
 ];

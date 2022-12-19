@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/hellolib.cjs.js",
+  "types": "dist/types/index.d.ts",
   "module": "dist/hellolib.es.js",
   "browser": "dist/hellolib.js",
   "type": "module",
@@ -47,5 +48,8 @@
     "testMatch": [
       "**/test/**/*.test.ts"
     ]
+  },
+  "dependencies": {
+    "rollup-plugin-dts": "^5.0.0"
   }
 }

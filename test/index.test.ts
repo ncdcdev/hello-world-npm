@@ -1,4 +1,4 @@
-import trim from '../src';
+import { trim } from '../src';
 
 describe('trim test', (): void => {
   test('no space', (): void => {

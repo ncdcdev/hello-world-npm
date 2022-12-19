@@ -47,8 +47,5 @@
     "testMatch": [
       "**/test/**/*.test.ts"
     ]
-  },
-  "dependencies": {
-    "rollup-plugin-dts": "^5.0.0"
   }
 }

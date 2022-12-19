@@ -6,7 +6,6 @@
   "types": "dist/types/index.d.ts",
   "module": "dist/hellolib.es.js",
   "browser": "dist/hellolib.js",
-  "type": "module",
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint --fix 'src/**/*.ts'",

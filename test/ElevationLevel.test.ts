@@ -10,4 +10,13 @@ describe("Elevation Level", () => {
     )
     expect(el.get('TP')).toBe(1)
   })
+  it("GLを設定していないとエラーになる", () => {
+    const init = {
+      TP: 1
+    }
+    const el = new ElevationLevel(
+      init,
+    )
+    expect(() => el.get('GL')).toThrow('GL is not defined')
+  })
 })

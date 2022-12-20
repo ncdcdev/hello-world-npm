@@ -23,8 +23,8 @@ npm ライブラリを作って、公開する
 ```ts
 // 標高
 interface ElevationLevel {
-  ev: Decimal; // 1.0
-  lv: string;  // "TP"
+  level: Decimal; // 1.0
+  standard: string;  // "TP"
 }
 
 // 変換オプション
@@ -61,6 +61,10 @@ el2 =  ElevationLevel(Decimal(5.0), "GL") // = TP+10
 
 elc.add(el1, el2, "TP") //→Decimalで返す→Decimal(16.0)
 elc.add(el1, 10.0, "TP") //→ElevationLevelで返す→{ev: 11.0, lv: "TP"}
+
+// 引き算
+elc.sub(el1, el2, "TP") //→Decimalで返す→Decimal(-14.0)
+els.sub(el1, 10.0, "TP") //→ElevationLevelで返す→{ev: .0, lv: "TP"}
 ```
 
 

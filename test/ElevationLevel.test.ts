@@ -1,9 +1,11 @@
 import { ElevationLevel } from "../src/ElevationLevel";
-describe("Elevation Level", () => {
+import { Decimal } from 'decimal.js'
 
+describe("Elevation Level", () => {
   it("TPを設定しているとTPが取得できる", () => {
     const init = {
-      TP: 1
+      level: 1,
+      standard: 'TP' as const,
     }
     const el = new ElevationLevel(
       init,
@@ -12,7 +14,8 @@ describe("Elevation Level", () => {
   })
   it("GLを設定していないとエラーになる", () => {
     const init = {
-      TP: 1
+      level: 1,
+      standard: 'TP' as const,
     }
     const el = new ElevationLevel(
       init,

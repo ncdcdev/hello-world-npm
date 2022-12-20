@@ -1,11 +1,13 @@
 export class ElevationLevel {
-  private _TP: number;
+  private _TP: number | undefined;
   readonly _GL: number | undefined;
   constructor(init: InitParameter) {
-    this._TP = init.TP;
-    this._GL = undefined;
+    switch (init.standard) {
+      case Standard.TP:
+        this._TP = init.level;
+    }
   }
-  get(type: LevelType) {
+  get(type: Standard) {
     const value = this[`_${type}`];
     if (value === undefined) {
       throw new Error(`${type} is not defined`);
@@ -15,10 +17,11 @@ export class ElevationLevel {
 }
 
 type InitParameter = {
-  TP: number;
+  standard: Standard;
+  level: number;
 }
-const LevelType = {
+const Standard = {
   TP: 'TP',
   GL: "GL",
 } as const
-export type LevelType = typeof LevelType[keyof typeof LevelType];
+export type Standard = typeof Standard[keyof typeof Standard];

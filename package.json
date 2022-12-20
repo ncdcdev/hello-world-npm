@@ -1,11 +1,15 @@
 {
-  "name": "helloworldnpm",
-  "version": "1.0.0",
+  "name": "elevationlevel",
+  "version": "0.0.1",
   "description": "",
-  "main": "dist/hellolib.cjs.js",
+  "main": "dist/elevationlevel.cjs.js",
   "types": "dist/types/index.d.ts",
-  "module": "dist/hellolib.es.js",
-  "browser": "dist/hellolib.js",
+  "module": "dist/elevationlevel.es.js",
+  "browser": "dist/elevationlevel.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ncdcdev/ElevationLevel.git"
+  },
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint --fix 'src/**/*.ts'",
@@ -47,5 +51,9 @@
     "testMatch": [
       "**/test/**/*.test.ts"
     ]
+  },
+  "dependencies": {
+    "decimal.js": "^10.4.3",
+    "np": "^7.6.2"
   }
 }

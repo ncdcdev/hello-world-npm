@@ -35,20 +35,23 @@ el.to("GL", { GL: { standard: "TP" as const, level: 6 } }) // = Decimal(4.0)
 ## Build
 
 - install
-  - `yarn`
+  - `npm install`
 - build
-  - `yarn build`
+  - `npm run build`
 
 ## publish
 
+- npmにlogin
+```
+npm login
+```
+
 - npmにpublishする
 ```
-yarn np
+npx np
 ```
 
 - (参考)npmにpublishしない(githubにpushしてtagを打つ)
 ```
-yarn np -no-publish
+npx np -no-publish
 ```
-
-

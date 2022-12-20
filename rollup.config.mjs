@@ -1,5 +1,5 @@
-// minifyに用
-import { terser as pluginTerser } from 'rollup-plugin-terser';
+// minify用
+import { terser as pluginTerser } from "rollup-plugin-minification";
 // typescript用
 import pluginTypescript from '@rollup/plugin-typescript';
 // CommonJS用

@@ -659,8 +659,10 @@ elegant-spinner@^1.0.1:
   resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
   integrity sha512-B+ZM+RXvRqQaAmkMlO/oSe5nMUOaUnyfGYCEHoR8wrXsZR2mA0XVibsxV1bvTwxdRWah1PkQqso2EzhILGHtEQ==
 
-elevationlevel@../../:
-  version "0.0.2"
+elevationlevel@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/elevationlevel/-/elevationlevel-0.1.1.tgz#d0786a5ee4f3de6c0eaf061f1b91131ffd52aebd"
+  integrity sha512-mSetEUqtr5I+RUmyv1KLuOuPHBfRXhNqm7UeOQ4o+RBcyIWXxzZDF85SFhD8ul1t6zq1CoCfAqWFuFkNp4Fc9w==
   dependencies:
     decimal.js "^10.4.3"
     np "^7.6.2"

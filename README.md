@@ -35,8 +35,11 @@ interface ElcOption{
 
 // 変換用クラス
 class ElConverter{ ... }
+```
 
-// 使用イメージ
+仕様イメージ
+```ts
+// 使用イメージ（宣言）
 el: ElevationLevel = {
   ev: Decimal(1.0)
   lv: "TP"
@@ -48,10 +51,18 @@ option: ElcOption = {
 
 // 値を変換して取得
 elc = ElConverter(option)
-elc.get(el, "TP") //Decimal(1.0)
-elc.get(el, "GL") //Decimal(11.0)
+elc.get(el, "TP") //→TPに変換して返す→Decimal(1.0)
+elc.get(el, "GL") //→GLに変換して返す→Decimal(11.0)
+elc.get(el) //→el.lvがTPなので、TPで返す→Decimal(1.0)
 
+// 足し算
+el1 =  ElevationLevel(Decimal(1.0), "TP")
+el2 =  ElevationLevel(Decimal(5.0), "GL") // = TP+10
+
+elc.add(el1, el2, "TP") //→Decimalで返す→Decimal(16.0)
+elc.add(el1, 10.0, "TP") //→ElevationLevelで返す→{ev: 11.0, lv: "TP"}
 ```
+
 
 # 以下、古いやつ（2022/12/19）
 

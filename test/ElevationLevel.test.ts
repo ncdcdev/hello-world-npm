@@ -45,6 +45,17 @@ describe("to", () => {
     expect(el.to("GL", { GL: { standard: "TP" as const, level: 6 } })).toEqual(new Decimal(4))
   })
 
+  it("GLからTPを計算できる", () => {
+    const init = {
+      level: 10,
+      standard: 'GL' as const,
+    }
+    const el = new ElevationLevel(
+      init,
+    )
+    expect(el.to("TP", { GL: { standard: "TP" as const, level: 6 } })).toEqual(new Decimal(16))
+  })
+
   it("TP→TPだと変換しない", () => {
     const init = {
       level: 10,
@@ -54,6 +65,5 @@ describe("to", () => {
       init,
     )
     expect(el.to("TP", { GL: { standard: "TP" as const, level: 6 } })).toEqual(new Decimal(10))
-
   })
 })

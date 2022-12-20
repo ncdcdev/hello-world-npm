@@ -1,6 +1,14 @@
 //import { trim } from "./node_modules/helloworldnpm/dist/hellolib.js";
-import { trim } from "helloworldnpm";
+import { ElevationLevel } from "elevationlevel";
 
-console.log(trim(" aaaa  "));
+const el = new ElevationLevel(
+  {
+    level: 10,
+    standard: 'TP' as const,
+  }
+)
 
+console.log(
+  el.to("GL", { GL: { standard: "TP" as const, level: 6 } }) // = Decimal(4.0)
+)
 

@@ -1,151 +1,54 @@
-# hello-world-npm
+# ElevationLevel
 
-npm ライブラリを作って、公開する
-(ハッカソン 2022)
+標高計算をするためのライブラリ。
+建築系のプロジェクトに置いて、TPやGLなどの標高基準を扱うことを想定し、
+標高の計算や、基準の変換(TPからGLなど)を実施する。
 
-## 参考
+## 使い方
 
-- オリジナルの JavaScript ライブラリを作ろう
-  - https://zenn.dev/manycicadas/books/b6f2d99b5208e9/viewer/c70a5d
+### TP+1.0を宣言と値の取得
 
+```ts
+// TP+1.0 
+const el = new ElevationLevel(
+  {
+    level: 1.0,
+    standard: 'TP' as const,
+  }
+)
+el.get('TP') // = Decimal(1.0)
+```
 
-# 動かし方
+### TPからGLへの変換
+```ts
+const el = new ElevationLevel(
+  {
+    level: 10,
+    standard: 'TP' as const,
+  }
+)
+el.to("GL", { GL: { standard: "TP" as const, level: 6 } }) // = Decimal(4.0)
+```
+
+# 本ライブラリの開発用情報
+
+## Build
 
 - install
   - `yarn`
 - build
   - `yarn build`
 
+## publish
 
-
-## 仕様 (検討中)
-
-```ts
-// 標高
-interface ElevationLevel {
-  level: Decimal; // 1.0
-  standard: string;  // "TP"
-}
-
-// 変換オプション
-// 例: GL=TP+10.0 GL=TP+12.0 Option { TP: 0.0, GL: -10.0, FL: -12.0 }
-interface ElcOption{
-  [id: string]: number;
-} 
-
-// 変換用クラス
-class ElConverter{ ... }
+- npmにpublishする
+```
+yarn np
 ```
 
-仕様イメージ
-```ts
-// 使用イメージ（宣言）
-el: ElevationLevel = {
-  ev: Decimal(1.0)
-  lv: "TP"
-}
-option: ElcOption = {
-  TP: 0.0,
-  GL: -10.0,
-} // GL=TP+10.0
-
-// 値を変換して取得
-elc = ElConverter(option)
-elc.get(el, "TP") //→TPに変換して返す→Decimal(1.0)
-elc.get(el, "GL") //→GLに変換して返す→Decimal(11.0)
-elc.get(el) //→el.lvがTPなので、TPで返す→Decimal(1.0)
-
-// 足し算
-el1 =  ElevationLevel(Decimal(1.0), "TP")
-el2 =  ElevationLevel(Decimal(5.0), "GL") // = TP+10
-
-elc.add(el1, el2, "TP") //→Decimalで返す→Decimal(16.0)
-elc.add(el1, 10.0, "TP") //→ElevationLevelで返す→{ev: 11.0, lv: "TP"}
-
-// 引き算
-elc.sub(el1, el2, "TP") //→Decimalで返す→Decimal(-14.0)
-els.sub(el1, 10.0, "TP") //→ElevationLevelで返す→{ev: .0, lv: "TP"}
+- (参考)npmにpublishしない(githubにpushしてtagを打つ)
 ```
-
-
-# 以下、古いやつ（2022/12/19）
-
-- 初期設定が必要（変換する基準)
-  - 例.GLがTP2.0m
-- これをどうもたせるか
-
-## 検討
-
-２つの変換パターンがある
-1. GL = TP+1.0のとき、 GL +3.0はTPいくつですか？(基準は変わらない)
-2. GL = TP+1.0で GL +3.0の地点は、GL = TP+2.0の時のGLはいくつですか？(基準が変わる)
-
-- 案.1 constructorでわたす
-```ts
-import { ElevationLevel as el} from 'ElevationLevel';
-
-const option = {
-  TP: '0.0',
-  FL: '2.0',
-  // GL: '3.0'
-}
-const foo = new el({option})
-
-console.log(foo.get('FL')) 
-
-// foo.get('GL') 
-// Error GL is not defined
+yarn np -no-publish
 ```
-
-- 案2. 毎回引数に変換元と変換先を指定する
-
-```ts
-import { toFL } from 'ElevationLevel';
-
-const foo = toFl({ GL: { TP: 2.0}}, {GL: 3.0})
-
-```
-
-## 標高基準(TPとかGL)の変換
-```ts
-
-```
-
-## 加算
-
-### ELと数字の足し算(ELが戻る)
-```ts
-const foo : el = new el({ "TP" : 1.0 });
-const bar : el = foo.add(12.5); 
-console.log(bar.get("TP")); //13.5 
-```
-
-### EL同士の足し算(数字が戻る)
-```ts
-const foo : el = new el({ "TP" : 1.0 });
-const bar : el = new el({ "TP" : 12.5 });
-const hoge : Decimal = foo.add(bar);
-console.log(hoge.toNumber()); // 13.5
-```
-
-## 減算
-
-### ELから数字を引く(ELが戻る)
-```ts
-const foo : el = new el({ "TP" : 1.0 });
-const bar : el = foo.sub(12.5); 
-console.log(bar.get("TP")); //-11.5 (絶対値がいい) 
-```
-
-### EL同士の足し算
-```ts
-const foo : el = new el({ "TP" : 1.0 });
-const bar : el = new el({ "TP" : 12.5 });
-const hoge : Decimal = foo.add(bar);
-console.log(hoge.toNumber()); // 13.5
-```
-
-
-
 
 

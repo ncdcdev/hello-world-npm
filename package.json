@@ -1,7 +1,7 @@
 {
   "name": "elevationlevel",
   "version": "0.0.2",
-  "description": "",
+  "description": "This class handles elevation standards, such as TP, GL, 1FL, etc., in building-related applications. It uses decimal.js for decimal calculations.",
   "main": "dist/elevationlevel.cjs.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/elevationlevel.es.js",
@@ -9,6 +9,12 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:ncdcdev/ElevationLevel.git"
+  },
+  "np": {
+    "yarn": true,
+    "cleanup": true,
+    "tests": true,
+    "branch": "main"
   },
   "scripts": {
     "build": "rollup -c",

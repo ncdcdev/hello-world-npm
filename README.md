@@ -36,6 +36,12 @@ const el = new ElevationLevel(
 el.to("GL", { GL: { standard: "TP" as const, level: 6 } }) // = Decimal(4.0)
 ```
 
+## サンプル実装
+https://github.com/ncdcdev/ElevationLevel/tree/main/sample/libraryTest
+
+## npm
+https://www.npmjs.com/package/elevationlevel
+
 # 本ライブラリの開発用情報
 
 ## Build
